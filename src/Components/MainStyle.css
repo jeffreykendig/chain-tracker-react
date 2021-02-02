@@ -1,0 +1,28 @@
+
+.body {
+  	font-family: "Montserrat Light", sans-serif;
+	font-size: 20px;
+	text-align: center;
+	padding: 10px;
+}
+
+h1, h2 {
+	color: #191970;
+}
+
+p {
+	color: #7A7A9D;
+}
+
+a:link, a:visited { 
+	color: #800000;
+	text-decoration: none;
+	text-align: center;
+	padding: 20px;
+}
+
+a:active, a:focus {
+	outline: 0;
+	border: none;
+	-moz-outline-style: none;
+  }
