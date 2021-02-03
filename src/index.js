@@ -11,7 +11,7 @@ import { BrowserRouter as Router,
           Route, 
           Switch, 
           Link } from 'react-router-dom'
-//import AuthProvider from './contexts/AuthContext'
+import { AuthProvider } from './contexts/AuthContext'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -32,6 +32,7 @@ ReactDOM.render(
 
 
 
+      <AuthProvider>
       <Switch>
         <Route exact path="/">
           <App />
@@ -43,6 +44,7 @@ ReactDOM.render(
           <Account />
         </Route>
       </Switch>
+      </AuthProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

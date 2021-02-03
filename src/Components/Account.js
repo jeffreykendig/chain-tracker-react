@@ -12,13 +12,13 @@ import {
     useRouteMatch, 
     useHistory
   } from "react-router-dom";
-  import { AuthProvider, useAuth } from '../contexts/AuthContext'
+  import { useAuth } from '../contexts/AuthContext'
  
 
 export default function Account(){
+    const { currentUser } = useAuth();
     let { path, url } = useRouteMatch(); 
         return(
-            <AuthProvider>
                 <div className="body">
                     <Nav variant="pills" defaultActiveKey="/Sign Up">
                         <Nav.Item>
@@ -30,6 +30,7 @@ export default function Account(){
                         <Nav.Item>
                             <Nav.Link href="/Forgot Password"><Link style={{color: 'black', fontSize: ".75em"}} to={`${url}/Forgot Password`}>Forgot Password</Link></Nav.Link>
                         </Nav.Item>
+                        {currentUser ? <Nav.Item><Nav.Link>Hi there</Nav.Link></Nav.Item> : <Nav.Item><Nav.Link>You're not logged in</Nav.Link></Nav.Item>}
                     </Nav>
 
 
@@ -39,7 +40,6 @@ export default function Account(){
                         </Route>
                     </Switch>
                 </div>
-            </AuthProvider>
         );
 }
 
@@ -122,7 +122,7 @@ function SignUp() {
     const passwordconfRef = useRef();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false)
-    const { signup, currentUser } = useAuth(); 
+    const { signup } = useAuth(); 
     const history = useHistory();
 
     async function handleSignup(e) {
